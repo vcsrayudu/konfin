@@ -1,0 +1,15 @@
+INPUT FORMAT
+
+ADD
+
+{"userId":"Konda1","fund":{"buyDate":"06-Jan-2017", "fundHouseValue":"53", "fundName":"112210", "fundValue":6000.0,"sipStartDate":"06-Jan-2017", "sipAmount":10000.0,"sip":"2"}}
+
+
+UPDATE
+
+{"userId":"Anil","fund":{"buyDate":"06-Dec-2017", "fundHouseValue":"53", "fundName":"112213", "fundValue":"6000", "sip":"2"}}
+
+
+DELETE
+
+{"userId":"Anil","fund":{"fundName":"112213"}}
