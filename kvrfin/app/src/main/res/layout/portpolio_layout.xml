@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+
+    android:orientation="vertical"
+    android:padding="20dp" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/portpolio"
+        android:textColor="@color/white_greyish"
+        android:textSize="17sp" />
+
+
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/white_greyish" />
+
+    <TableLayout
+        android:id="@+id/portpolio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/fundName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+
+            android:padding="5dp"
+            android:text="@string/fundName"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/units"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:padding="5dp"
+            android:text="@string/units"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/iamount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:padding="5dp"
+            android:text="@string/iamount"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/camount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:padding="5dp"
+            android:text="@string/camount"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+            <TextView
+                android:id="@+id/gain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                android:padding="5dp"
+                android:text="@string/gain"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+
+
+    </TableLayout>
+    <TableLayout
+        android:id="@+id/portpolioList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/portpolioListString"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        android:padding="5dp"
+        android:text="Subbu"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+
+</LinearLayout>
