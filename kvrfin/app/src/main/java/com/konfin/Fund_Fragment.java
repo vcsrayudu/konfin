@@ -36,11 +36,13 @@ import org.json.JSONObject;
 public class Fund_Fragment extends Fragment implements
         OnClickListener {
     private static View view;
-    private static Map<Integer,Boolean> fundHouseExpantion;
+    private static Map<Integer, Boolean> fundHouseExpantion;
     private static FragmentManager fragmentManager;
 
 
     private String fund;
+    private String status;
+
     public Fund_Fragment() {
 
     }
@@ -49,111 +51,124 @@ public class Fund_Fragment extends Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Bundle args = getArguments();
-        fundHouseExpantion=new HashMap<>();
+        fundHouseExpantion = new HashMap<>();
         fund = args.getString("fund");
+        //status = args.getString("status");
         view = inflater.inflate(R.layout.fund_layout, container,
                 false);
-         //   rowIds=new ArrayList<>();
+        //   rowIds=new ArrayList<>();
         initViews();
 
         setListeners();
-        System.out.println("On Crete");
         return view;
     }
 
+
+    private void createFundHouseLayout(LinearLayout fundHouse, Fund fundObject) {
+        int fundHouseValue = Integer.parseInt(fundObject.getFundHouseValue());
+        int fundNameValue = Integer.parseInt(fundObject.getFundName());
+
+        System.out.println("Fund House Object: " + fundObject.getFundHouseValue());
+        int black=getResources().getColor(R.color.black);
+        TextView fundName = (TextView)view.findViewById(R.id.fundHouse);
+        fundName.setText(CONSTANTS.fundHouseMap.get(fundHouseValue));
+        fundName.setTextColor(black);
+        TextView scheme = new TextView(getActivity());
+        scheme.setText("Scheme : " + CONSTANTS.fundNameMap.get(fundNameValue));
+        scheme.setPadding(18, 10, 15, 10);
+        scheme.setTextColor(black);
+       // scheme.setTypeface(Typeface.DEFAULT_BOLD);
+       // scheme.setTextColor(R.color.white);
+        scheme.setTextSize(18);
+        fundHouse.addView(scheme);
+
+        TextView units = new TextView(getActivity());
+        units.setText("Total Units : " + fundObject.getTotalUnits().toString());
+        units.setPadding(18, 10, 15, 10);
+        units.setTextColor(black);
+        fundHouse.addView(units);
+        TextView iamount = new TextView(getActivity());
+        iamount.setText("Invested Amount : " + fundObject.getFundValue());
+        iamount.setPadding(18, 10, 15, 10);
+        iamount.setTextColor(black);
+        fundHouse.addView(iamount);
+        TextView camount = new TextView(getActivity());
+        double currentValue = fundObject.getNav() * fundObject.getTotalUnits();
+        camount.setText("Market Value : " + currentValue);
+        camount.setPadding(18, 10, 15, 10);
+        camount.setTextColor(black);
+        fundHouse.addView(camount);
+        TextView gain = new TextView(getActivity());
+        double gainValue = (currentValue - fundObject.getFundValue())/fundObject.getFundValue();
+        gain.setText("Gain : " + (gainValue*100)+"%");
+        gain.setPadding(18, 10, 15, 10);
+        gain.setTextColor(black);
+        fundHouse.addView(gain);
+        TextView buyDate = new TextView(getActivity());
+        buyDate.setText("Buy Date : " + fundObject.getBuyDate());
+        buyDate.setPadding(18, 10, 15, 10);
+        buyDate.setTextColor(black);
+        fundHouse.addView(buyDate);
+
+        TextView nav = new TextView(getActivity());
+        nav.setText("NAV  : " + fundObject.getNav());
+        nav.setPadding(18, 10, 15, 10);
+        nav.setTextColor(black);
+        fundHouse.addView(nav);
+
+//        TextView buyDate = new TextView(getActivity());
+//        buyDate.setText("Buy Date : " + fundObject.getBuyDate());
+//        buyDate.setPadding(18, 20, 15, 20);
+//        fundHouse.addView(buyDate);
+//        TextView buyDate = new TextView(getActivity());
+//        buyDate.setText("Buy Date : " + fundObject.getBuyDate());
+//        buyDate.setPadding(18, 20, 15, 20);
+//        fundHouse.addView(buyDate);
+
+    }
+
     // Initialize the views
-    private void initViews()  {
+    private void initViews() {
+        fragmentManager = getActivity().getSupportFragmentManager();
         try {
-            fragmentManager = getActivity().getSupportFragmentManager();
-            LinearLayout layout=(LinearLayout)view.findViewById(R.id.fundDisplay);
-         //   LinearLayout.LayoutParams lparams = new LinearLayout.LayoutParams(
-        //            LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-            Fund fundObject = new ObjectMapper().readValue(fund, Fund.class);
+          //  LinearLayout portpolioTable = (LinearLayout) view.findViewById(R.id.fundDisplay);
+                   Fund fundObject = new ObjectMapper().readValue(fund.toString(), Fund.class);
+                    int fundHouseValue = Integer.parseInt(fundObject.getFundHouseValue());
+                    int fundNameValue = Integer.parseInt(fundObject.getFundName());
+                    LinearLayout fundHouse = (LinearLayout) view.findViewById(R.id.fundDisplay);
+                    fundHouse.setId(fundNameValue);
+                  //  fundHouse.setOrientation(LinearLayout.VERTICAL);
+                   // fundHouse.setOnClickListener(this);
+                    createFundHouseLayout(fundHouse, fundObject);
+                  //  portpolioTable.addView(fundHouse);
 
-            int fundNameValue = Integer.parseInt(fundObject.getFundName());
-            int fundHouseValue = Integer.parseInt(fundObject.getFundHouseValue());
-            TextView fundHouseName = (TextView)view.findViewById(R.id.fundHouse);;
-            fundHouseName.setText(CONSTANTS.fundHouseMap.get(fundHouseValue));
 
-            fundHouseName.setOnClickListener(this);
-//            fundHouseName.setPadding(2, 20, 15, 20);
-//            fundHouseName.setLayoutParams(lparams);
-//            fundHouseName.setTypeface(Typeface.DEFAULT_BOLD);
-//            fundHouseName.setTextSize(20);
-           // layout.addView(fundHouseName);
-            TextView fundName = new TextView(getActivity());
-            fundName.setText("Scheme : "+CONSTANTS.fundNameMap.get(fundNameValue));
-            fundName.setPadding(12, 20, 15, 20);
-         //   fundName.setLayoutParams(lparams);
-           //fundName.setTypeface(Typeface.DEFAULT_BOLD);
-            fundName.setTextSize(18);
-            layout.addView(fundName);
-
-            TextView units = new TextView(getActivity());
-           // units.setTypeface(Typeface.DEFAULT_BOLD);
-            units.setTextSize(18);
-            units.setText("Units : "+fundObject.getTotalUnits().toString());
-            units.setPadding(2, 20, 15, 20);
-            layout.addView(units);
-            TextView iamount = new TextView(getActivity());
-            iamount.setText("Invested Amount : " + fundObject.getFundValue());
-            iamount.setPadding(2, 20, 15, 20);
-          //  iamount.setTypeface(Typeface.DEFAULT_BOLD);
-            iamount.setTextSize(18);
-            layout.addView(iamount);
-            TextView camount = new TextView(getActivity());
-            double currentValue = fundObject.getNav() * fundObject.getTotalUnits();
-            camount.setText("Market Value : " + currentValue);
-            //camount.setTypeface(Typeface.DEFAULT_BOLD);
-            camount.setTextSize(18);
-            camount.setPadding(2, 20, 15, 20);
-            System.out.println("Current Value: " + currentValue);
-            layout.addView(camount);
-            TextView gain = new TextView(getActivity());
-           // gain.setTypeface(Typeface.DEFAULT_BOLD);
-            gain.setTextSize(18);
-            double gainValue = currentValue-fundObject.getFundValue();
-            gain.setText("Gain : " + gainValue);
-            gain.setPadding(2, 20, 15, 20);
-            layout.addView(gain);
-            gain.setOnClickListener(this);
-            layout.setOnClickListener(this);
 
 
 
         } catch (IOException e) {
             e.printStackTrace();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
 
     }
 
     // Set Listeners over buttons
     private void setListeners() {
-     //   LinearLayout layout=(LinearLayout)view.findViewById(R.id.fundDisplay);
-        Button back = (Button)view.findViewById(R.id.backToPortpolio);
- //       Button back=new Button(getActivity());
-   //     back.setText("Back");
-
-       // layout.addView(back);
+        Button back=(Button)view.findViewById(R.id.backToPortpolio);
         back.setOnClickListener(this);
-        System.out.println("Set on Back");
-
-    }
-    private void Backpresses() {
-        System.out.print("Click on Back");
-       // fragmentManager.popBackStack();
-        System.out.print("Clicked on Back");
     }
 
     @Override
     public void onClick(View v) {
-        System.out.print("On Click  start : "+v.getTag());
-      //  Backpresses();
-        System.out.print("On Click  after : "+v.getTag());
+        int eventId = v.getId();
+    //    System.out.println("Event :"+eventId);
+    //   fragmentManager.popBackStack();
+        fragmentManager.popBackStackImmediate();
+
 
     }
 

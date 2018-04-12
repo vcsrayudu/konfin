@@ -1,22 +1,48 @@
 package com.konfin.util;
 
 public class User {
-	String userName;
-	String userPan;
+	String userFullName;
+	String userMailID;
 	String password;
 	String userRole;
-	public String getUserName() {
-		return userName;
+	String userLoginID;
+	public String getUserLoginID() {
+		return userLoginID;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+
+	public void setUserLoginID(String userLoginID) {
+		this.userLoginID = userLoginID;
 	}
-	public String getUserPan() {
-		return userPan;
+	String phone;
+	public String getPhone() {
+		return phone;
 	}
-	public void setUserPan(String userPan) {
-		this.userPan = userPan;
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
+
+
+
+
+
+
+	public String getUserFullName() {
+		return userFullName;
+	}
+
+	public void setUserFullName(String userFullName) {
+		this.userFullName = userFullName;
+	}
+
+	public String getUserMailID() {
+		return userMailID;
+	}
+
+	public void setUserMailID(String userMailID) {
+		this.userMailID = userMailID;
+	}
+
 	public String getPassword() {
 		return password;
 	}

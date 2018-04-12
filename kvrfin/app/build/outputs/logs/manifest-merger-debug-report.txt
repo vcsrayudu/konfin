@@ -1,15 +1,15 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:2:1-35:12
-INJECTED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:2:1-35:12
-INJECTED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:2:1-35:12
-INJECTED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:2:1-35:12
+ADDED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:2:1-32:12
+INJECTED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:2:1-32:12
+INJECTED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:2:1-32:12
+INJECTED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:2:1-32:12
 MERGED from [com.android.support:appcompat-v7:22.2.1] C:\Users\cvidudal\.gradle\caches\transforms-1\files-1.1\appcompat-v7-22.2.1.aar\c737fbb11c4b6499723059f851a0316f\AndroidManifest.xml:17:1-24:12
 MERGED from [com.android.support:recyclerview-v7:22.2.1] C:\Users\cvidudal\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-22.2.1.aar\fe90955dc2fd92855c4b9cd2db6cfee8\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-v4:22.2.1] C:\Users\cvidudal\.gradle\caches\transforms-1\files-1.1\support-v4-22.2.1.aar\8e545b4976c20f08349bed9f7e6f1cc6\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:2:1-35:12
-INJECTED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:2:1-35:12
-INJECTED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:2:1-32:12
+INJECTED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:2:1-32:12
+INJECTED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:2:1-32:12
 	package
 		ADDED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:3:5-25
 		INJECTED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml
@@ -61,7 +61,7 @@ ADDED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:14:5-80
 	android:name
 		ADDED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:14:22-77
 application
-ADDED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:16:5-33:19
+ADDED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:16:5-30:19
 MERGED from [com.android.support:appcompat-v7:22.2.1] C:\Users\cvidudal\.gradle\caches\transforms-1\files-1.1\appcompat-v7-22.2.1.aar\c737fbb11c4b6499723059f851a0316f\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:appcompat-v7:22.2.1] C:\Users\cvidudal\.gradle\caches\transforms-1\files-1.1\appcompat-v7-22.2.1.aar\c737fbb11c4b6499723059f851a0316f\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:22.2.1] C:\Users\cvidudal\.gradle\caches\transforms-1\files-1.1\support-v4-22.2.1.aar\8e545b4976c20f08349bed9f7e6f1cc6\AndroidManifest.xml:22:5-20
@@ -90,9 +90,3 @@ category#android.intent.category.LAUNCHER
 ADDED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:27:17-77
 	android:name
 		ADDED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:27:27-74
-activity#com.konfin.ScrollingActivity
-ADDED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:30:9-32:73
-	android:label
-		ADDED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:32:13-61
-	android:name
-		ADDED from C:\Website\KONDA\kvrfin\app\src\main\AndroidManifest.xml:31:13-46

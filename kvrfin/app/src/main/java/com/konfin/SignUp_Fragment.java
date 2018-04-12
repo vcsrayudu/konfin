@@ -9,6 +9,7 @@ import android.content.res.ColorStateList;
 import android.content.res.XmlResourceParser;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,9 +20,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.konfin.util.*;
+
+import org.json.JSONObject;
+
 public class SignUp_Fragment extends Fragment implements OnClickListener {
 	private static View view;
-	private static EditText fullName, emailId, mobileNumber, location,
+	private static FragmentManager fragmentManager;
+	private static EditText fullName, emailId, mobileNumber, pan,
 			password, confirmPassword;
 	private static TextView login;
 	private static Button signUpButton;
@@ -42,10 +47,11 @@ public class SignUp_Fragment extends Fragment implements OnClickListener {
 
 	// Initialize all views
 	private void initViews() {
+		fragmentManager = getActivity().getSupportFragmentManager();
 		fullName = (EditText) view.findViewById(R.id.fullName);
 		emailId = (EditText) view.findViewById(R.id.userEmailId);
 		mobileNumber = (EditText) view.findViewById(R.id.mobileNumber);
-		location = (EditText) view.findViewById(R.id.location);
+		pan = (EditText) view.findViewById(R.id.panNumber);
 		password = (EditText) view.findViewById(R.id.password);
 		confirmPassword = (EditText) view.findViewById(R.id.confirmPassword);
 		signUpButton = (Button) view.findViewById(R.id.signUpBtn);
@@ -95,7 +101,7 @@ public class SignUp_Fragment extends Fragment implements OnClickListener {
 		String getFullName = fullName.getText().toString();
 		String getEmailId = emailId.getText().toString();
 		String getMobileNumber = mobileNumber.getText().toString();
-		String getLocation = location.getText().toString();
+		String getPan = pan.getText().toString();
 		String getPassword = password.getText().toString();
 		String getConfirmPassword = confirmPassword.getText().toString();
 
@@ -107,7 +113,7 @@ public class SignUp_Fragment extends Fragment implements OnClickListener {
 		if (getFullName.equals("") || getFullName.length() == 0
 				|| getEmailId.equals("") || getEmailId.length() == 0
 				|| getMobileNumber.equals("") || getMobileNumber.length() == 0
-				|| getLocation.equals("") || getLocation.length() == 0
+				|| getPan.equals("") || getPan.length() == 0
 				|| getPassword.equals("") || getPassword.length() == 0
 				|| getConfirmPassword.equals("")
 				|| getConfirmPassword.length() == 0)
@@ -131,9 +137,41 @@ public class SignUp_Fragment extends Fragment implements OnClickListener {
 					"Please select Terms and Conditions.");
 
 		// Else do signup or do your stuff
-		else
-			Toast.makeText(getActivity(), "Do SignUp.", Toast.LENGTH_SHORT)
-					.show();
+		else {
+			RequestTask requestTask=new RequestTask(KonFinUtils.createAccount(getFullName,getEmailId,getPassword,getPan,getMobileNumber));
+			try
+			{
+				String str_result=  requestTask.execute().get();
+				Bundle args = new Bundle();
+				 JSONObject user=requestTask.postResponce;
+				 if(user.get("password").equals(""))
+				 {
+					 args.putString("userObject", requestTask.postResponce.toString());
+					 Login_Fragment f=new Login_Fragment();
+					 f.setArguments(args);
+					 fragmentManager
+							 .beginTransaction()
+							 .setCustomAnimations(R.anim.right_enter, R.anim.left_out)
+							 .replace(R.id.frameContainer,
+									 f,
+									 Utils.Login_Fragment).commit();
+				 }
+				 else
+				 {
+					 new CustomToast().Show_Toast(getActivity(), view,
+							 "User login Id already exist.");
+				 }
 
+
+
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+
+			Toast.makeText(getActivity(), "Succesfully created Your account.", Toast.LENGTH_SHORT)
+					.show();
+		}
 	}
 }

@@ -20,13 +20,20 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 
 public class RequestTask extends AsyncTask<String, String, String>{
-public static JSONArray results=null;
+public static JSONArray getResponce=null;
+    public static JSONObject postResponce=null;
 	HttpGet getData=null;
+	HttpPost postData=null;
 	public RequestTask(HttpGet getData)
 	{
 		this.getData=getData;
 		
 	}
+    public RequestTask(HttpPost postData)
+    {
+        this.postData=postData;
+
+    }
 	@Override
        protected void onPreExecute() {
            super.onPreExecute();
@@ -38,14 +45,25 @@ public static JSONArray results=null;
    @Override
    protected String doInBackground(String... uri) {
    	 HttpClient httpclient = new DefaultHttpClient();
-       HttpResponse response;
+       HttpResponse response=null;
        
 //       this.dialog.setMessage("Processing..."); 
 //       this.dialog.show();
        String responseString = null;
        try {
-           System.out.println("URI : "+ getData.getURI());
-          response = httpclient.execute(getData);
+           if(getData!=null)
+           {
+               System.out.println("getData URI : "+ getData.getURI());
+
+               response = httpclient.execute(getData);
+           }
+           if(postData!=null)
+           {
+               System.out.println("postData URI : "+ postData.getURI());
+
+               response = httpclient.execute(postData);
+           }
+
            StatusLine statusLine = response.getStatusLine();
            System.out.println("statusLine : "+statusLine.getStatusCode());
            if(statusLine.getStatusCode() == HttpStatus.SC_OK){
@@ -61,8 +79,14 @@ public static JSONArray results=null;
                while ((line = reader.readLine()) != null) {
                    json += line;
                }
-               results = new JSONArray(json);
- System.out.println("results : "+results);
+
+               if(postData!=null)
+                   postResponce = new JSONObject(json);
+               if(getData.getURI().toString().endsWith("Konfin/users"))
+                   postResponce=new JSONObject(json);
+               else if(getData!=null)
+                   getResponce = new JSONArray(json);
+
                // RETRIEVE EACH JSON OBJECT'S FIELDS
              
           //  RESULT=jo.getInt("RES");

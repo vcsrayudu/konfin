@@ -8,14 +8,56 @@ public class Fund {
 	//long id;
 	String fundName;
 	String fundHouseValue;
-	
-
-	long fundValue;
+	String sipStartDate;
+	double fundValue;
 	String buyDate;
-	long sip;
+	int sip;
 	Double totalUnits;
 	Double nav;
-	
+	double sipAmount;
+	String frequency;
+	List sipUnits;
+	public String getSipStartDate() {
+		return sipStartDate;
+	}
+
+	public void setSipStartDate(String sipStartDate) {
+		this.sipStartDate = sipStartDate;
+	}
+
+
+	public double getSipAmount() {
+		return sipAmount;
+	}
+
+	public void setSipAmount(double sipAmount) {
+		this.sipAmount = sipAmount;
+	}
+
+	public double getFundValue() {
+		return fundValue;
+	}
+
+
+
+
+
+
+
+
+	public String getFrequency() {
+		return frequency;
+	}
+
+	public void setFrequency(String frequency) {
+		this.frequency = frequency;
+	}
+
+
+	public void setSip(int sip) {
+		this.sip = sip;
+	}
+
 	public Double getNav() {
 		return nav;
 	}
@@ -25,15 +67,15 @@ public class Fund {
 	}
 
 	//String user;
-	List sipUnits;
 
-/*	public String getUser() {
-		return user;
-	}
 
-	public void setUser(String user) {
-		this.user = user;
-	}*/
+	/*	public String getUser() {
+            return user;
+        }
+
+        public void setUser(String user) {
+            this.user = user;
+        }*/
 	public String getFundHouseValue() {
 		return fundHouseValue;
 	}
@@ -42,9 +84,6 @@ public class Fund {
 		this.fundHouseValue = fundHouseValue;
 	}
 
-	public void setSip(long sip) {
-		this.sip = sip;
-	}
 
 	public void setTotalUnits(Double totalUnits) {
 		this.totalUnits = totalUnits;
@@ -57,12 +96,12 @@ public class Fund {
 		return totalUnits;
 	}
 
-	public Fund(int i, String fundName, long fundValue) {
-		super();
-		//this.id = i;
-		this.fundName = fundName;
-		this.fundValue = fundValue;
-	}
+//	public Fund(int i, String fundName, long fundValue) {
+//		super();
+//		//this.id = i;
+//		this.fundName = fundName;
+//		this.fundValue = fundValue;
+//	}
 
 	public String getBuyDate() {
 
@@ -70,26 +109,26 @@ public class Fund {
 	}
 
 	public void setBuyDate(String buyDate) {
-		
+
 		this.buyDate = buyDate;
 	}
 
-	public long getSip() {
+	public int getSip() {
 
 		return sip;
 	}
 
-	
 
-	
 
-	
+
+
+
 	public List getSipUnits() {
 		return sipUnits;
 	}
 
 	public void setSipUnits(List sipUnits) {
-		//System.out.println("sipUnits: "+sipUnits);
+		System.out.println("sipUnits: "+sipUnits);
 		this.sipUnits = sipUnits;
 	}
 
@@ -111,11 +150,9 @@ public class Fund {
 		this.fundName = fundName;
 	}
 
-	public long getFundValue() {
-		return fundValue;
-	}
 
-	public void setFundValue(long fundValue) {
+
+	public void setFundValue(double fundValue) {
 		// System.out.println("fundValue: "+fundValue);
 		this.fundValue = fundValue;
 	}

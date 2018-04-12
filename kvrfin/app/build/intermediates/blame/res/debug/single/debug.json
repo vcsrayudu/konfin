@@ -24,6 +24,10 @@
         "source": "C:\\Users\\cvidudal\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-22.2.1.aar\\c737fbb11c4b6499723059f851a0316f\\res\\drawable-mdpi\\abc_btn_switch_to_on_mtrl_00012.9.png"
     },
     {
+        "merged": "C:\\Website\\KONDA\\kvrfin\\app\\build\\intermediates\\res\\merged\\debug\\drawable_portpolio.jpg.flat",
+        "source": "C:\\Website\\KONDA\\kvrfin\\app\\src\\main\\res\\drawable\\portpolio.jpg"
+    },
+    {
         "merged": "C:\\Website\\KONDA\\kvrfin\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_list_menu_item_checkbox.xml.flat",
         "source": "C:\\Users\\cvidudal\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-22.2.1.aar\\c737fbb11c4b6499723059f851a0316f\\res\\layout\\abc_list_menu_item_checkbox.xml"
     },
@@ -228,6 +232,10 @@
         "source": "C:\\Users\\cvidudal\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-22.2.1.aar\\c737fbb11c4b6499723059f851a0316f\\res\\drawable-xhdpi\\abc_btn_check_to_on_mtrl_015.png"
     },
     {
+        "merged": "C:\\Website\\KONDA\\kvrfin\\app\\build\\intermediates\\res\\merged\\debug\\layout_admin_layout.xml.flat",
+        "source": "C:\\Website\\KONDA\\kvrfin\\app\\src\\main\\res\\layout\\admin_layout.xml"
+    },
+    {
         "merged": "C:\\Website\\KONDA\\kvrfin\\app\\build\\intermediates\\res\\merged\\debug\\drawable_loginbutton_selector.xml.flat",
         "source": "C:\\Website\\KONDA\\kvrfin\\app\\src\\main\\res\\drawable\\loginbutton_selector.xml"
     },
@@ -302,10 +310,6 @@
     {
         "merged": "C:\\Website\\KONDA\\kvrfin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
         "source": "C:\\Users\\cvidudal\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-22.2.1.aar\\c737fbb11c4b6499723059f851a0316f\\res\\drawable-xhdpi\\abc_ic_menu_copy_mtrl_am_alpha.png"
-    },
-    {
-        "merged": "C:\\Website\\KONDA\\kvrfin\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_scrolling.xml.flat",
-        "source": "C:\\Website\\KONDA\\kvrfin\\app\\src\\main\\res\\layout\\activity_scrolling.xml"
     },
     {
         "merged": "C:\\Website\\KONDA\\kvrfin\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_activity_chooser_view.xml.flat",
@@ -880,6 +884,10 @@
         "source": "C:\\Users\\cvidudal\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-22.2.1.aar\\c737fbb11c4b6499723059f851a0316f\\res\\drawable-mdpi\\abc_list_divider_mtrl_alpha.9.png"
     },
     {
+        "merged": "C:\\Website\\KONDA\\kvrfin\\app\\build\\intermediates\\res\\merged\\debug\\drawable_login1.jpg.flat",
+        "source": "C:\\Website\\KONDA\\kvrfin\\app\\src\\main\\res\\drawable\\login1.jpg"
+    },
+    {
         "merged": "C:\\Website\\KONDA\\kvrfin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_abc_list_longpressed_holo.9.png.flat",
         "source": "C:\\Users\\cvidudal\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-22.2.1.aar\\c737fbb11c4b6499723059f851a0316f\\res\\drawable-hdpi\\abc_list_longpressed_holo.9.png"
     },
@@ -1166,6 +1174,10 @@
     {
         "merged": "C:\\Website\\KONDA\\kvrfin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_abc_btn_radio_to_on_mtrl_000.png.flat",
         "source": "C:\\Users\\cvidudal\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-22.2.1.aar\\c737fbb11c4b6499723059f851a0316f\\res\\drawable-xhdpi\\abc_btn_radio_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "C:\\Website\\KONDA\\kvrfin\\app\\build\\intermediates\\res\\merged\\debug\\drawable_login.jpg.flat",
+        "source": "C:\\Website\\KONDA\\kvrfin\\app\\src\\main\\res\\drawable\\login.jpg"
     },
     {
         "merged": "C:\\Website\\KONDA\\kvrfin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_abc_list_selector_disabled_holo_light.9.png.flat",

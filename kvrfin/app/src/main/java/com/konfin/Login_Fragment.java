@@ -1,5 +1,6 @@
 package com.konfin;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.konfin.util.*;
 
 import android.content.res.ColorStateList;
@@ -25,17 +26,20 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public class Login_Fragment extends Fragment implements OnClickListener {
 	private static View view;
 
 	private static EditText userName, password;
 	private static Button loginButton;
 	private static TextView forgotPassword, signUp;
-	private static CheckBox show_hide_password;
+
 	private static LinearLayout loginLayout;
 	private static Animation shakeAnimation;
 	private static FragmentManager fragmentManager;
-
+	private String user;
 	public Login_Fragment() {
 
 	}
@@ -43,6 +47,14 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		Bundle args = getArguments();
+try {
+	user = args.getString("userObject");
+}
+catch (Exception e)
+{
+
+}
 		view = inflater.inflate(R.layout.login_layout, container, false);
 		initViews();
 		setListeners();
@@ -55,11 +67,22 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 
 		userName = (EditText) view.findViewById(R.id.login_emailid);
 		password = (EditText) view.findViewById(R.id.login_password);
+		if(user!=null)
+		{
+			try {
+				User userObject = new ObjectMapper().readValue(user, User.class);
+				userName.setText(userObject.getUserLoginID());
+				password.setFocusable(true);
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
 		loginButton = (Button) view.findViewById(R.id.loginBtn);
 		forgotPassword = (TextView) view.findViewById(R.id.forgot_password);
 		signUp = (TextView) view.findViewById(R.id.createAccount);
-		show_hide_password = (CheckBox) view
-				.findViewById(R.id.show_hide_password);
+
 		loginLayout = (LinearLayout) view.findViewById(R.id.login_layout);
 
 		// Load ShakeAnimation
@@ -73,7 +96,7 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 					xrp);
 
 			forgotPassword.setTextColor(csl);
-			show_hide_password.setTextColor(csl);
+
 			signUp.setTextColor(csl);
 		} catch (Exception e) {
 		}
@@ -86,38 +109,7 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 		signUp.setOnClickListener(this);
 
 		// Set check listener over checkbox for showing and hiding password
-		show_hide_password
-				.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
-					@Override
-					public void onCheckedChanged(CompoundButton button,
-							boolean isChecked) {
-
-						// If it is checkec then show password else hide
-						// password
-						if (isChecked) {
-
-							show_hide_password.setText(R.string.hide_pwd);// change
-																			// checkbox
-																			// text
-
-							password.setInputType(InputType.TYPE_CLASS_TEXT);
-							password.setTransformationMethod(HideReturnsTransformationMethod
-									.getInstance());// show password
-						} else {
-							show_hide_password.setText(R.string.show_pwd);// change
-																			// checkbox
-																			// text
-
-							password.setInputType(InputType.TYPE_CLASS_TEXT
-									| InputType.TYPE_TEXT_VARIATION_PASSWORD);
-							password.setTransformationMethod(PasswordTransformationMethod
-									.getInstance());// hide password
-
-						}
-
-					}
-				});
 	}
 
 	@Override
@@ -153,7 +145,8 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 	// Check Validation before login
 	private void checkValidation() {
 		// Get email id and password
-		String userId = userName.getText().toString();
+
+		String userLoninId = userName.getText().toString();
 		String getPassword = password.getText().toString();
 
 		// Check patter for email id
@@ -162,7 +155,7 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 		//Matcher m = p.matcher(userId);
 
 		// Check for both field is empty or not
-		if (userId.equals("") || userId.length() == 0
+		if (userLoninId.equals("") || userLoninId.length() == 0
 				|| getPassword.equals("") || getPassword.length() == 0) {
 			loginLayout.startAnimation(shakeAnimation);
 			new CustomToast().Show_Toast(getActivity(), view,
@@ -174,24 +167,62 @@ public class Login_Fragment extends Fragment implements OnClickListener {
 //			new CustomToast().Show_Toast(getActivity(), view,
 //					"Your Email Id is Invalid.");
 		// Else do login and do your stuff
-		else
+		if(userLoninId.equals("Konda"))
 		{
-
-			RequestTask requestTask=new RequestTask(KonFinUtils.transferPostData(userId, getPassword));
-			InputParams responseParam=new InputParams();
-			try
-			{
-				String str_result=  requestTask.execute().get();
-				Bundle args = new Bundle();
-				args.putString("portpolio", requestTask.results.toString());
-				Portpolio_Fragment f=new Portpolio_Fragment();
+			RequestTask requestTask=new RequestTask(KonFinUtils.getUsers(userLoninId));
+			Admin_Fragment f = new Admin_Fragment();
+			Bundle args = new Bundle();
+			try {
+				String str_result = requestTask.execute().get();
+				JSONObject getResponce = requestTask.postResponce;
+				if (getResponce.length() != 0) {
+					args.putString("users", getResponce.toString());
+					args.putString("status", "exist");
+					System.out.println("exist" + getResponce);
+				}
 				f.setArguments(args);
 				fragmentManager
 						.beginTransaction()
 						.setCustomAnimations(R.anim.right_enter, R.anim.left_out)
 						.replace(R.id.frameContainer,
 								f,
-								Utils.Portpolio_Fragment).commit();
+								Utils.Admin_Fragment).commit();
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		else
+		{
+
+			RequestTask requestTask=new RequestTask(KonFinUtils.getFundsData(userLoninId, getPassword));
+			InputParams responseParam=new InputParams();
+			try
+			{
+				String str_result=  requestTask.execute().get();
+				Bundle args = new Bundle();
+				JSONArray getResponce=requestTask.getResponce;
+				if(getResponce.length()!=0) {
+					args.putString("portpolio", getResponce.toString());
+					args.putString("status", "exist");
+					System.out.println("exist"+getResponce);
+				}
+				else
+				{
+					args.putString("portpolio", getResponce.toString());
+					args.putString("status", "empty");
+					System.out.println("empty"+getResponce.length());
+				}
+					Portpolio_Fragment f = new Portpolio_Fragment();
+					f.setArguments(args);
+					fragmentManager
+							.beginTransaction()
+							.setCustomAnimations(R.anim.right_enter, R.anim.left_out)
+							.replace(R.id.frameContainer,
+									f,
+									Utils.Portpolio_Fragment).commit();
+
 
 
 			}

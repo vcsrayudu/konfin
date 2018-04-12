@@ -1,0 +1,203 @@
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#0EB0AC"
+    android:padding="20dp" >
+    <TextView
+
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/admin"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+    <Spinner
+        android:id="@+id/user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"/>
+    <!--EditText
+        android:id="@+id/fundHouse"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:hint="@string/fundHouse"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+    <EditText
+        android:id="@+id/scheme"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:hint="@string/fundName"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+    <EditText
+        android:id="@+id/buyDate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:hint="@string/buydate"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+    <EditText
+    android:id="@+id/sip"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:hint="@string/sip"
+    android:textColor="@color/black"
+    android:textSize="25sp"
+    android:textStyle="bold" />
+    <EditText
+        android:id="@+id/sipStartDate"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:hint="@string/sipStartDate"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" /-->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/portpolio"
+        android:background="#0EB0AC"
+        android:orientation="vertical"
+        android:layout_alignParentRight="true"
+        android:padding="20dp" >
+
+        <!--TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/portpolio"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="25sp" />
+
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="@color/black" /-->
+
+        <!--TableLayout
+            android:id="@+id/portpolio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/fundName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+
+                android:padding="5dp"
+                android:text="@string/fundName"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/units"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                android:padding="5dp"
+                android:text="@string/units"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/iamount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                android:padding="5dp"
+                android:text="@string/iamount"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/camount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                android:padding="5dp"
+                android:text="@string/camount"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/gain"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+
+                    android:padding="5dp"
+                    android:text="@string/gain"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </TableRow>
+
+
+
+        </TableLayout-->
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:background="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:layout_below="@+id/portpolio"
+        android:paddingTop="8dp" >
+
+
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentLeft="true"
+            android:padding="5dp"
+            android:text="@string/back"
+            android:textColor="@color/input_login"
+            android:textSize="14sp" />
+        <Button
+            android:id="@+id/addNew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/addNew"
+            android:textColor="@color/input_login"
+            android:textSize="15sp" />
+    </LinearLayout>
+</LinearLayout>

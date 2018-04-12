@@ -2,8 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-
+    android:id="@+id/portpolio"
+    android:background="#0EB0AC"
     android:orientation="vertical"
+    android:layout_alignParentRight="true"
     android:padding="20dp" >
 
     <TextView
@@ -11,17 +13,18 @@
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:text="@string/portpolio"
-        android:textColor="@color/white_greyish"
-        android:textSize="17sp" />
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
 
 
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="1px"
-        android:background="@color/white_greyish" />
+        android:background="@color/black" />
 
-    <TableLayout
+    <!--TableLayout
         android:id="@+id/portpolio"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -88,26 +91,12 @@
 
 
 
-    </TableLayout>
-    <TableLayout
-        android:id="@+id/portpolioList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    </TableLayout-->
 
 
-    </TableLayout>
-
-    <TextView
-        android:id="@+id/portpolioListString"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-
-        android:padding="5dp"
-        android:text="Subbu"
-        android:textColor="@color/white"
-        android:textSize="15sp"
-        android:textStyle="bold" />
-
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/black" />
 
 </LinearLayout>
