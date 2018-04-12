@@ -1,5 +1,6 @@
 package com.konfin.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,8 +16,8 @@ import com.konfin.service.UserService;
 public class UserController {
 	UserService userService = new UserService();
 	@RequestMapping(value = "/users", method = RequestMethod.GET, headers = "Accept=application/json,application/xml")
-	public List getUsers() {
-		List listOfUsers = userService.getAllUsers();
+	public HashMap getUsers() {
+		HashMap<String,String> listOfUsers = userService.getAllUsers();
 		return listOfUsers;
 	}
 	@RequestMapping(value = "/users", method = RequestMethod.POST, headers = "Accept=application/json,application/xml,text/plain")

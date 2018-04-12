@@ -48,6 +48,7 @@ public class FundsUtils {
 				Date navdate=convertStringToDate(portpolios.get("navUpdateDate").toString());
 				String sipDate=portpolios.get("sipUpdateDate").toString();
 				Date sipdate=convertStringToDate(sipDate);
+				sipdate=incrementDateOneMonth(sipdate);
 				Date cDate=convertStringToDate(currentDate);
 				boolean sipupdate=false;
 				if (navdate.compareTo(cDate)<0) {
@@ -63,8 +64,10 @@ public class FundsUtils {
 							fundObjectJson=setSipUnits(fundObjectJson,sipDate);
 							sipupdate=true;
 						}
-					
-						portpolio.add(fundObjectJson);
+						ObjectMapper mapper = new ObjectMapper();
+						String jsonInString = mapper.writeValueAsString(fundObjectJson);
+						JSONObject jsonObj = (JSONObject) jsonParser.parse(jsonInString);
+						portpolio.add(jsonObj);
 						//Update SIP Units
 						
 					}
@@ -331,7 +334,12 @@ public class FundsUtils {
 				writer = new FileWriter(file);
 				writer.write(polios);
 			}
-
+			else
+			{
+				writer = new FileWriter(file);
+				writer.write(polios);
+			}
+System.out.println(""+file.getAbsolutePath());
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

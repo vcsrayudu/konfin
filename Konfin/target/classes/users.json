@@ -1,20 +1,20 @@
 {  
    "users":[  
       {  
-         "userName":"subbu",
-         "userPan":"AFUPV3976L",
+         "userFullName":"subbu",
+         "userLoginID":"AFUPV3976L",
          "password":"password",
          "userRole":"user"
       },
       {  
-         "userName":"konda",
-         "userPan":"AKPTV3976L",
+         "userFullName":"konda",
+         "userLoginID":"AKPTV3976L",
          "password":"password12",
          "userRole":"admin"
       },
       {  
-         "userName":"Anil",
-         "userPan":"BFGTV3976L",
+         "userFullName":"Anil",
+         "userLoginID":"BFGTV3976L",
          "password":"password",
          "userRole":"user"
       }

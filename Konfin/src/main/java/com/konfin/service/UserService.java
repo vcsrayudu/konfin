@@ -2,6 +2,7 @@ package com.konfin.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.json.simple.JSONArray;
@@ -20,13 +21,13 @@ public class UserService {
 
 	}
 
-	public static List getAllUsers() {
-		List<String> userList = new ArrayList<String>();
+	public static HashMap getAllUsers() {
+		HashMap<String, String> userList = new HashMap<String,String>();
 		JSONObject usersJson = FundsUtils.readFile("users.json");
 		JSONArray userArray = (JSONArray) usersJson.get("users");
 		for (Object userObj : userArray.toArray()) {
 			JSONObject user = (JSONObject) userObj;
-			userList.add(user.get("userName").toString());
+			userList.put(user.get("userLoginID").toString(),user.get("userFullName").toString());
 		}
 		// new ArrayList(fundsMap.values());
 
@@ -45,8 +46,8 @@ public class UserService {
 			boolean userExist = false;
 			for (Object userObj : usersList.toArray()) {
 				JSONObject userJson = (JSONObject) userObj;
-				String userName = (String) userJson.get("userName");
-				if (userName.equals(user.getUserName())) {
+				String userLoginID = user.getUserLoginID();
+				if (userLoginID.equals((String) userJson.get("userLoginID"))) {
 
 					userExist = true;
 					break;
@@ -64,7 +65,8 @@ public class UserService {
 				try {
 					FundsUtils.writeFile(users.toJSONString(), "users.json");
 					user.setPassword("");
-					user.setUserPan("");
+					user.setUserMailID("");
+					user.setPhone("");
 					// inputParams.setFund(null);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -95,8 +97,8 @@ public class UserService {
 			boolean userExist = false;
 			for (Object userObj : usersList.toArray()) {
 				JSONObject userJson = (JSONObject) userObj;
-				String userName = (String) userJson.get("userName");
-				if (userName.equals(user.getUserName())) {
+				String userLoginID = user.getUserLoginID();
+				if (userLoginID.equals((String) userJson.get("userLoginID"))) {
 
 					userExist = true;
 					usersList.remove(userJson);
@@ -114,8 +116,10 @@ public class UserService {
 
 				try {
 					FundsUtils.writeFile(users.toJSONString(), "users.json");
+					
 					user.setPassword("");
-					user.setUserPan("");
+					user.setUserMailID("");
+					user.setPhone("");
 					// inputParams.setFund(null);
 				} catch (Exception e) {
 					e.printStackTrace();
